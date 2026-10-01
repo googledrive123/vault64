@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GameVault</title>
+  <link rel="icon" href="/favicon.svg">
+  <script>
+  // GitHub Pages serves this for anything missing in this vault. Inside the
+  // player's game frame it tells the player, which falls back to the game's
+  // original host. On its own it goes to the site's 404 page.
+  (function () {
+    var framed = false;
+    try {
+      var frame = parent.document.getElementById('gameFrame');
+      framed = !!frame && frame.contentWindow === window;
+    } catch (e) {}
+    if (framed) { parent.postMessage({ gv: 'missing' }, location.origin); return; }
+    try { sessionStorage.setItem('gv.missing', location.pathname + location.search); } catch (e) {}
+    location.replace('/404/');
+  })();
+  </script>
+</head>
+<body></body>
+</html>

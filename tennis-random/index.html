@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<script src="/js/mimicry.js"></script>
+<meta charset="utf-8"/>
+<title>Crazy Tennis</title>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" name="viewport"/>
+<meta content="Construct 3" name="generator"/>
+
+
+<link href="icons/icon-256.png" rel="apple-touch-icon" sizes="256x256"/>
+<link href="icons/icon-256.png" rel="icon" type="image/png"/>
+<link href="style.css" rel="stylesheet"/>
+<script>
+ let ysdk;
+       
+        function initSDK() {
+            YaGames
+                .init()
+                .then(ysdk_ => {
+                    ysdk = ysdk_;
+                    ysdk.adv.showFullscreenAdv({
+                        callbacks: {
+                            onClose: wasShown => {
+                                console.info('First close')
+                            }
+                        }
+                    });
+                })
+        
+
+
+}
+</script>
+<!-- Yandex Games SDK (local no-op stand-in) -->
+<script>
+    (function(d) {
+        var t = d.getElementsByTagName('script')[0];
+        var s = d.createElement('script');
+        s.src = 'ya-games-stub.js';
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+        s.onload = initSDK;
+    })(document);
+</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script src="box2d.wasm.js"></script>
+<noscript>
+<div id="notSupportedWrap">
+<h2 id="notSupportedTitle">This content requires JavaScript</h2>
+<p class="notSupportedMessage">JavaScript appears to be disabled. Please enable it to view this content.</p>
+</div>
+</noscript>
+<script src="scripts/supportcheck.js"></script>
+<script src="scripts/offlineclient.js" type="module"></script>
+<script src="scripts/main.js" type="module"></script>
+<script src="scripts/register-sw.js" type="module"></script>
+</body>
+</html>
